@@ -20,7 +20,13 @@ $message = isset($input['entry'][0]['messaging'][0]['message']['text'])? $input[
 
 
 if($message){
-    $message_to_reply = "test send message reply from bot";
+    
+    if($message == "hendi"){
+        $message_to_reply = "Adelin";
+    }else{
+            $message_to_reply = "test send message reply from bot";
+
+    }
     
     $url = "https://graph.facebook.com/v2.6/me/messages?access_token=".$access_token;
     
