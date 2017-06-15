@@ -22,24 +22,19 @@ $message = isset($input['entry'][0]['messaging'][0]['message']['text'])? $input[
 if($message){
     
     if($message == "hendi"){
-        $message_to_reply = "Adelin";
+            $message_to_reply = "Adelin";
+            $jsonData = formatText($sender,$message_to_reply);
+    }
+    else if($message == "slider"){
+            $jsonData = getSlider($sender);
     }else{
             $message_to_reply = "test send message reply from bot";
-
+            $jsonData = formatText($sender,$message_to_reply);
     }
     
     $url = "https://graph.facebook.com/v2.6/me/messages?access_token=".$access_token;
     
-    $jsonData = '{
     
-                    "recipient":{
-                        "id":"'.$sender.'"
-                    },
-                    "message":{
-                          "text":"'.$message_to_reply.'"
-                    }
-    
-                }';
                 
     $ch = curl_init($url);
     curl_setopt($ch,CURLOPT_POST,1);
@@ -51,4 +46,66 @@ if($message){
     curl_close($ch);
     
 }
+
+
+function formatText($sender,$message){
+    $jsonData = '{
+    
+                    "recipient":{
+                        "id":"'.$sender.'"
+                    },
+                    "message":{
+                          "text":"'.$message.'"
+                    }
+    
+                }';
+                
+    return $jsonData;
+}
+
+function getSlider($sender){
+    
+    $items = [];
+    for($i=0;$i<5;$i++){
+        $items[] = array(
+                'title'=>"Title ".$i,
+                'item_url'=>"http://custom.co.id/",
+                'image_url'=>"http://custom.co.id/images/home/sablon-baju.jpg",
+                'buttons'=>array(
+                        array(
+                            'type'=>'web_url',
+                            'url'=>"http://custom.co.id/",
+                            'title'=>'link to coid'
+                        ),
+                        array(
+                            'type'=>'postback',
+                            'payload'=>"Thanks Button",
+                            'title'=>'extra button'
+                        )
+                ),
+            
+        );
+    }
+    
+    $itemJson = json_encode($items);
+    
+    $output = '{
+                    "attachment":{
+                            "type":"template",
+                            "payload":{
+                                    "template_type":"generic",
+                                    "elements":'.$itemJson.'
+                            }
+                    }
+    
+            }';
+            
+    $jsonData = '{"recipient":{ "id":"'.$sender.'" },
+                  "message":'.$output'
+                }';
+                
+                
+    return $jsonData;
+}
+
 ?>
