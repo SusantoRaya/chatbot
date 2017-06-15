@@ -102,7 +102,7 @@ function getSlider($sender){
             }';
             
     $jsonData = '{"recipient":{ "id":"'.$sender.'" },
-                  "message":'.$output'
+                  "message":'.$output.'
                 }';
                 
                 
