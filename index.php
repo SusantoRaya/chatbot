@@ -63,7 +63,7 @@ function formatText($sender,$message){
     return $jsonData;
 }
 
-/*function getSlider($sender){
+function getSlider($sender){
     
     $items = array();
     for($i=0;$i<5;$i++){
@@ -108,6 +108,6 @@ function formatText($sender,$message){
                 
     return $jsonData;
 }
-*/
+
 
 ?>
