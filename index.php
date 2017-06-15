@@ -63,49 +63,50 @@ function formatText($sender,$message){
     return $jsonData;
 }
 
-//function getSlider($sender){
-//    
-//    $items = [];
-//    for($i=0;$i<5;$i++){
-//        $items[] = array(
-//                'title'=>"Title ".$i,
-//                'item_url'=>"http://custom.co.id/",
-//                'image_url'=>"http://custom.co.id/images/home/sablon-baju.jpg",
-//                'buttons'=>array(
-//                        array(
-//                            'type'=>'web_url',
-//                            'url'=>"http://custom.co.id/",
-//                            'title'=>'link to coid'
-//                        ),
-//                        array(
-//                            'type'=>'postback',
-//                            'payload'=>"Thanks Button",
-//                            'title'=>'extra button'
-//                        )
-//                ),
-//            
-//        );
-//    }
-//    
-//    $itemJson = json_encode($items);
-//    
-//    $output = '{
-//                    "attachment":{
-//                            "type":"template",
-//                            "payload":{
-//                                    "template_type":"generic",
-//                                    "elements":'.$itemJson.'
-//                            }
-//                    }
-//    
-//            }';
-//            
-//    $jsonData = '{"recipient":{ "id":"'.$sender.'" },
-//                  "message":'.$output'
-//                }';
-//                
-//                
-//    return $jsonData;
-//}
+function getSlider($sender){
+    
+    $items = array();
+    for($i=0;$i<5;$i++){
+        $items[] = array(
+                'title'=>"Title ".$i,
+                'item_url'=>"http://custom.co.id/",
+                'image_url'=>"http://custom.co.id/images/home/sablon-baju.jpg",
+                'subtitle'=>"this is sub",
+                'buttons'=>array(
+                        array(
+                            'type'=>'web_url',
+                            'url'=>"http://custom.co.id/",
+                            'title'=>"link to coid"
+                        ),
+                        array(
+                            'type'=>"postback",
+                            'payload'=>"Thanks Button",
+                            'title'=>"extra button"
+                        )
+                ),
+            
+        );
+    }
+    
+    $itemJson = json_encode($items);
+     
+    $output = '{
+                    "attachment":{
+                            "type":"template",
+                            "payload":{
+                                    "template_type":"generic",
+                                    "elements":'.$itemJson.'
+                            }
+                    }
+    
+            }';
+            
+    $jsonData = '{"recipient":{ "id":"'.$sender.'" },
+                  "message":'.$output'
+                }';
+                
+                
+    return $jsonData;
+}
 
 ?>
