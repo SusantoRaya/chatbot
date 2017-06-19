@@ -44,8 +44,9 @@ if($message){
             curl_close($ch);
             
             $message_to_reply = $result;
+            file_put_contents("php://stderr", $result);
             $jsonData = formatText($sender,$message_to_reply);
-            file_put_contents("php://stderr", $jsonData);
+            
     }
     
     $url = "https://graph.facebook.com/v2.6/me/messages?access_token=".$access_token;
