@@ -37,6 +37,7 @@ if($message){
             $ch = curl_init($url);
             curl_setopt($ch,CURLOPT_POST,1);
             curl_setopt($ch,CURLOPT_POSTFIELDS,$data);
+            curl_setopt($handle, CURLOPT_HTTPHEADER, array('Content-Type: text/plain'));
             //curl_setopt($ch,CURLOPT_HTTPHEADER,array('content-type: application/json'));
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             //curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
