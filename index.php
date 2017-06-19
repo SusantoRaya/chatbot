@@ -30,23 +30,22 @@ if($message){
             file_put_contents('aaa.txt',$jsonData);
     }else{
         
-           /* $url = "http://custom.co.id/admin/index.php?r=Generate/chatbot";
+            $url = "http://custom.co.id/admin/index.php?r=Generate/chatbot";
             $data = "id=".$message;
             
             $ch = curl_init($url);
             curl_setopt($ch,CURLOPT_POST,1);
             curl_setopt($ch,CURLOPT_POSTFIELDS,$data);
-            curl_setopt($handle, CURLOPT_HTTPHEADER, array('Content-Type: text/plain'));
+           // curl_setopt($handle, CURLOPT_HTTPHEADER, array('Content-Type: text/plain'));
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             
             $result = curl_exec($ch);
             curl_close($ch);
             
             $message_to_reply = $result;
-            file_put_contents("logerror.txt", $result);
-            */
-            
-            $message_to_reply = "troll";
+            //file_put_contents("logerror.txt", $result);
+            //$message_to_reply = "troll";
+     
             $jsonData = formatText($sender,$message_to_reply);
             
     }
