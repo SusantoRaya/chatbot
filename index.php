@@ -46,7 +46,7 @@ if($message){
             $message_to_reply = $result;
             file_put_contents("logerror.txt", $result);
             
-            $message_to_reply = "adsadasdads";
+            //$message_to_reply = "adsadasdads";
             $jsonData = formatText($sender,$message_to_reply);
             
     }
