@@ -45,7 +45,7 @@ if($message){
             
             $message_to_reply = $result;
             $jsonData = formatText($sender,$message_to_reply);
-            file_put_contents('aaa.txt',$jsonData);
+            print_r($jsonData); die();
     }
     
     $url = "https://graph.facebook.com/v2.6/me/messages?access_token=".$access_token;
