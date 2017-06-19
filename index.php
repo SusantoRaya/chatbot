@@ -30,7 +30,7 @@ if($message){
             file_put_contents('aaa.txt',$jsonData);
     }else{
         
-           /* $url = "http://custom.co.id/admin/index.php?r=Generate/chatbot";
+            $url = "http://custom.co.id/admin/index.php?r=Generate/chatbot";
             $data = http_build_query(array('id' => $message));
             
             $ch = curl_init($url);
@@ -44,9 +44,9 @@ if($message){
             curl_close($ch);
             
             $message_to_reply = $result;
-            file_put_contents("php://stderr", $result);
-            */
-     $message_to_reply = "adsadasdads";
+            file_put_contents("logerror.txt", $result);
+            
+            $message_to_reply = "adsadasdads";
             $jsonData = formatText($sender,$message_to_reply);
             
     }
