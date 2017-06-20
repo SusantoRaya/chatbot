@@ -27,7 +27,10 @@ if($message){
     }
     else if($message == "slider"){
             $jsonData = getSlider($sender);
-            file_put_contents('aaa.txt',$jsonData);
+            //file_put_contents('aaa.txt',$jsonData);
+    }else if($message == "button"){
+            $jsonData = getButton($sender);
+            //file_put_contents('aaa.txt',$jsonData);
     }else{
         
             $url = "http://custom.co.id/admin/index.php?r=Generate/chatbot";
@@ -119,6 +122,42 @@ function getSlider($sender){
     
             }';
             
+    $jsonData = '{"recipient":{ "id":"'.$sender.'" },
+                  "message":'.$output.'
+                }';
+                
+                
+    return $jsonData;
+}
+
+function getButton($sender){
+    
+    
+    
+    $output = '{
+                    "attachment":{
+                            "type":"template",
+                            "payload":{
+                                    "template_type":"button",
+                                    "text":"What do you want to do next?",
+                                    "buttons":[
+                                      {
+                                        "type":"web_url",
+                                        "url":"https://petersapparel.parseapp.com",
+                                        "title":"Show Website"
+                                      },
+                                      {
+                                        "type":"postback",
+                                        "title":"Start Chatting",
+                                        "payload":"USER_DEFINED_PAYLOAD"
+                                      }
+                                    ]
+                            }
+                    }
+    
+            }';
+            
+    
     $jsonData = '{"recipient":{ "id":"'.$sender.'" },
                   "message":'.$output.'
                 }';
