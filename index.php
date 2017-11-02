@@ -17,12 +17,8 @@ $message = isset($input['entry'][0]['messaging'][0]['message']['text'])? $input[
 if($message){
     
     if($message == "Reseller Anime"){
-            $message_to_reply = "Custom.ph are digital textile startup." .
-                                "Custom.ph are digital textile startup." .
-                                "We can provide dropship anime fullprint t-shirt," .
-                                "No worries, so no inventory is needed." .
-                                "We print on demand and we don’t have minimum order." . 
-                                "Delivery will only take 4-7 days upon placement of your order.";
+            $message_to_reply = "We are a digital textile startup. We can provide dropship Anime fullprint t-shirt, so no inventory is needed. We print on demand and we don’t have minimum order. Delivery will only take 4-7 days upon placement of your order.".
+                                "These are some sample designs from our catalogue, you might want to them check out.";
             $jsonData = formatText($sender,$message_to_reply);
             $jsonData2 = getImage($sender);
      
