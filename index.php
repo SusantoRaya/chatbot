@@ -89,7 +89,7 @@ function getImage($sender){
                     "attachment":{
                             "type":"image",
                             "payload":{
-                                    "url":"http://custom.co.id/images/home/sablon-baju.jpg", 
+                                    "url":"http://custom.ph/images/facebook-reseller/anime-finish.jpg", 
                                     "is_reusable":true
                             }
                     }
