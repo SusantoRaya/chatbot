@@ -36,7 +36,6 @@ if($message){
             curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData);
             curl_setopt($ch,CURLOPT_HTTPHEADER,array('content-type: application/json'));
             curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
-
             $result = curl_exec($ch);
             curl_close($ch);
      
@@ -45,7 +44,6 @@ if($message){
             curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData2);
             curl_setopt($ch,CURLOPT_HTTPHEADER,array('content-type: application/json'));
             curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
-
             $result = curl_exec($ch);
             curl_close($ch);
      
@@ -54,7 +52,6 @@ if($message){
             curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData3);
             curl_setopt($ch,CURLOPT_HTTPHEADER,array('content-type: application/json'));
             curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
-
             $result = curl_exec($ch);
             curl_close($ch);
         
@@ -63,7 +60,6 @@ if($message){
             curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData4);
             curl_setopt($ch,CURLOPT_HTTPHEADER,array('content-type: application/json'));
             curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
-
             $result = curl_exec($ch);
             curl_close($ch);
         
@@ -72,12 +68,63 @@ if($message){
             curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData5);
             curl_setopt($ch,CURLOPT_HTTPHEADER,array('content-type: application/json'));
             curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
-
             $result = curl_exec($ch);
             curl_close($ch);
         
         
         
+    }
+    else if($message == "Reseller Dota"){
+        
+        $message_to_reply = "We are a digital textile startup. We can provide dropship Anime fullprint t-shirt, so no inventory is needed. We print on demand and we don’t have minimum order. Delivery will only take 4-7 days upon placement of your order.".
+                                "These are some sample designs from our catalogue, you might want to them check out.";
+            $jsonData = formatText($sender,$message_to_reply);
+            $jsonData2 = getMockImageDota($sender);
+            $jsonData3 = formatText($sender,"These are some our finished products."); 
+            $jsonData4 = getFinishImageDota($sender);
+            $jsonData5 = formatText($sender,"Our reseller price only Php 350 for Gildan t-shirt and Php 599 for fullprint t-shirt. Upload our catalogue to your FB page and we can dropship even for 1 piece of our product.");
+      
+            $url = "https://graph.facebook.com/v2.6/me/messages?access_token=".$access_token;
+        
+            $ch = curl_init($url);
+            curl_setopt($ch,CURLOPT_POST,1);
+            curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData);
+            curl_setopt($ch,CURLOPT_HTTPHEADER,array('content-type: application/json'));
+            curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
+            $result = curl_exec($ch);
+            curl_close($ch);
+     
+            $ch = curl_init($url);
+            curl_setopt($ch,CURLOPT_POST,1);
+            curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData2);
+            curl_setopt($ch,CURLOPT_HTTPHEADER,array('content-type: application/json'));
+            curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
+            $result = curl_exec($ch);
+            curl_close($ch);
+     
+            $ch = curl_init($url);
+            curl_setopt($ch,CURLOPT_POST,1);
+            curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData3);
+            curl_setopt($ch,CURLOPT_HTTPHEADER,array('content-type: application/json'));
+            curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
+            $result = curl_exec($ch);
+            curl_close($ch);
+        
+            $ch = curl_init($url);
+            curl_setopt($ch,CURLOPT_POST,1);
+            curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData4);
+            curl_setopt($ch,CURLOPT_HTTPHEADER,array('content-type: application/json'));
+            curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
+            $result = curl_exec($ch);
+            curl_close($ch);
+        
+            $ch = curl_init($url);
+            curl_setopt($ch,CURLOPT_POST,1);
+            curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData5);
+            curl_setopt($ch,CURLOPT_HTTPHEADER,array('content-type: application/json'));
+            curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
+            $result = curl_exec($ch);
+            curl_close($ch);
     }
 //    else if($message == "slider"){
 //            $jsonData = getSlider($sender);
@@ -111,9 +158,6 @@ if($message){
 //            
 //    }
 }
-
-
-
 function formatText($sender,$message){
     $jsonData = '{
     
@@ -147,12 +191,50 @@ function getMockImage($sender){
                 
     return $jsonData;
 }
+function getMockImageDota($sender){
+        $output = '{
+                    "attachment":{
+                            "type":"image",
+                            "payload":{
+                                    "url":"http://custom.ph/images/facebook-reseller/dota-mock.jpg", 
+                                    "is_reusable":true
+                            }
+                    }
+    
+                }';
+            
+    $jsonData = '{"recipient":{ "id":"'.$sender.'" },
+                  "message":'.$output.'
+                }';
+                
+                
+    return $jsonData;
+}
 function getFinishImage($sender){
         $output = '{
                     "attachment":{
                             "type":"image",
                             "payload":{
                                     "url":"http://custom.ph/images/facebook-reseller/anime-finish.jpg", 
+                                    "is_reusable":true
+                            }
+                    }
+    
+                }';
+            
+    $jsonData = '{"recipient":{ "id":"'.$sender.'" },
+                  "message":'.$output.'
+                }';
+                
+                
+    return $jsonData;
+}
+function getFinishImageDota($sender){
+        $output = '{
+                    "attachment":{
+                            "type":"image",
+                            "payload":{
+                                    "url":"http://custom.ph/images/facebook-reseller/dota-finish.jpg", 
                                     "is_reusable":true
                             }
                     }
