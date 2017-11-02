@@ -23,7 +23,7 @@ $message = isset($input['entry'][0]['messaging'][0]['message']['text'])? $input[
 
 if($message){
     
-    if($message == "Reseller Anime"){
+    if($message == "Reseller"){
             $message_to_reply = "Custom.ph are digital textile startup. 
 We can provide dropship anime fullprint t-shirt, 
 No worries, so no inventory is needed.
