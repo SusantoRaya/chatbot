@@ -27,7 +27,8 @@ if($message){
             $jsonData2 = getMockImage($sender);
             $jsonData3 = formatText($sender,"These are some our finished products."); 
             $jsonData4 = getFinishImage($sender);
-     
+            $jsonData5 = formatText($sender,"Our reseller price only Php 350 for Gildan t-shirt and Php 599 for fullprint t-shirt. Upload our catalogue to your FB page and we can dropship even for 1 piece of our product.");
+      
             $url = "https://graph.facebook.com/v2.6/me/messages?access_token=".$access_token;
         
             $ch = curl_init($url);
@@ -65,6 +66,16 @@ if($message){
 
             $result = curl_exec($ch);
             curl_close($ch);
+        
+            $ch = curl_init($url);
+            curl_setopt($ch,CURLOPT_POST,1);
+            curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData5);
+            curl_setopt($ch,CURLOPT_HTTPHEADER,array('content-type: application/json'));
+            curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
+
+            $result = curl_exec($ch);
+            curl_close($ch);
+        
         
         
     }
