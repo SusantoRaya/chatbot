@@ -24,6 +24,18 @@ if($message){
                                 "We print on demand and we don’t have minimum order." . 
                                 "Delivery will only take 4-7 days upon placement of your order.";
             $jsonData = formatText($sender,$message_to_reply);
+            $jsonData2 = getImage($sender);
+            $ch = curl_init($url);
+            curl_setopt($ch,CURLOPT_POST,1);
+            curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData);
+            curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData2);
+            curl_setopt($ch,CURLOPT_HTTPHEADER,array('content-type: application/json'));
+            curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
+
+            $result = curl_exec($ch);
+            curl_close($ch);
+        
+        
     }
     else if($message == "slider"){
             $jsonData = getSlider($sender);
@@ -60,14 +72,7 @@ if($message){
     
     
                 
-    $ch = curl_init($url);
-    curl_setopt($ch,CURLOPT_POST,1);
-    curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData);
-    curl_setopt($ch,CURLOPT_HTTPHEADER,array('content-type: application/json'));
-    curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
     
-    $result = curl_exec($ch);
-    curl_close($ch);
     
 }
 function formatText($sender,$message){
