@@ -3,6 +3,8 @@ $access_token = "EAAEdVUvgTwwBAMq2qUDZBVTZBITiIQNfetlgbjbYZC9kFl8UN9hsCTrMZCkjhm
 //ph
 // callback url
 //https://polar-stream-34335.herokuapp.com/
+//https://github.com/SusantoRaya/chatbot.git
+//facebook : grabtruk@gmail.com
 //$access_token = "EAABZBz1EPLBwBAPwkU3jdGcz4XlZB8hJ52D9WGRE6aBt1dAuoY1BUuCH4HczzMZBjvzOCJM66vWuT1wS956juD70vitmpeFW4BDHgqsgwWvMARaabg6ZCu3kbfjHi3heFK8ozUQ6ZCu4idbpynTd6qj78zSoY4zKxHoXb2JtZAkAZDZD";
 $verify_token = "fb_mv_bot";
 $hub_verify_token = null;
@@ -66,44 +68,41 @@ if($message){
         
         
     }
-    else if($message == "slider"){
-            $jsonData = getSlider($sender);
-            //file_put_contents('aaa.txt',$jsonData);
-    }else if($message == "button"){
-            $jsonData = getButton($sender);
-            //file_put_contents('aaa.txt',$jsonData);
-    }else if($message == "image"){
-            $jsonData = getImage($sender);
-            //file_put_contents('aaa.txt',$jsonData);
-    }else{
-        
-            $url = "http://custom.co.id/admin/index.php?r=Generate/chatbot";
-            $data = "id=".$message;
-            
-            $ch = curl_init($url);
-            curl_setopt($ch,CURLOPT_POST,1);
-            curl_setopt($ch,CURLOPT_POSTFIELDS,$data);
-           // curl_setopt($handle, CURLOPT_HTTPHEADER, array('Content-Type: text/plain'));
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            
-            $result = curl_exec($ch);
-            curl_close($ch);
-            
-            $message_to_reply = $result;
-            //file_put_contents("logerror.txt", $result);
-            //$message_to_reply = "troll";
-     
-            $jsonData = formatText($sender,$message_to_reply);
-            
-    }
-    
-    
-    
-    
-                
-    
-    
+//    else if($message == "slider"){
+//            $jsonData = getSlider($sender);
+//            //file_put_contents('aaa.txt',$jsonData);
+//    }else if($message == "button"){
+//            $jsonData = getButton($sender);
+//            //file_put_contents('aaa.txt',$jsonData);
+//    }else if($message == "image"){
+//            $jsonData = getImage($sender);
+//            //file_put_contents('aaa.txt',$jsonData);
+//    }else{
+//        
+//            // untuk ambil resi coid
+//            $url = "http://c*s*om.co.id/admin/index.php?r=Generate/chatbot";
+//            $data = "id=".$message;
+//            
+//            $ch = curl_init($url);
+//            curl_setopt($ch,CURLOPT_POST,1);
+//            curl_setopt($ch,CURLOPT_POSTFIELDS,$data);
+//           // curl_setopt($handle, CURLOPT_HTTPHEADER, array('Content-Type: text/plain'));
+//            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//            
+//            $result = curl_exec($ch);
+//            curl_close($ch);
+//            
+//            $message_to_reply = $result;
+//            //file_put_contents("logerror.txt", $result);
+//            //$message_to_reply = "troll";
+//     
+//            $jsonData = formatText($sender,$message_to_reply);
+//            
+//    }
 }
+
+
+
 function formatText($sender,$message){
     $jsonData = '{
     
