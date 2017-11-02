@@ -20,9 +20,12 @@ if($message){
             $message_to_reply = "We are a digital textile startup. We can provide dropship Anime fullprint t-shirt, so no inventory is needed. We print on demand and we don’t have minimum order. Delivery will only take 4-7 days upon placement of your order.".
                                 "These are some sample designs from our catalogue, you might want to them check out.";
             $jsonData = formatText($sender,$message_to_reply);
-            $jsonData2 = getImage($sender);
+            $jsonData2 = getMockImage($sender);
+            $jsonData3 = formatText($sender,"These are some our finished products."); 
+            $jsonData4 = getFinishImage($sender);
      
             $url = "https://graph.facebook.com/v2.6/me/messages?access_token=".$access_token;
+        
             $ch = curl_init($url);
             curl_setopt($ch,CURLOPT_POST,1);
             curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData);
@@ -35,6 +38,24 @@ if($message){
             $ch = curl_init($url);
             curl_setopt($ch,CURLOPT_POST,1);
             curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData2);
+            curl_setopt($ch,CURLOPT_HTTPHEADER,array('content-type: application/json'));
+            curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
+
+            $result = curl_exec($ch);
+            curl_close($ch);
+     
+            $ch = curl_init($url);
+            curl_setopt($ch,CURLOPT_POST,1);
+            curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData3);
+            curl_setopt($ch,CURLOPT_HTTPHEADER,array('content-type: application/json'));
+            curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
+
+            $result = curl_exec($ch);
+            curl_close($ch);
+        
+            $ch = curl_init($url);
+            curl_setopt($ch,CURLOPT_POST,1);
+            curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData4);
             curl_setopt($ch,CURLOPT_HTTPHEADER,array('content-type: application/json'));
             curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
 
@@ -95,7 +116,26 @@ function formatText($sender,$message){
                 
     return $jsonData;
 }
-function getImage($sender){
+function getMockImage($sender){
+        $output = '{
+                    "attachment":{
+                            "type":"image",
+                            "payload":{
+                                    "url":"http://custom.ph/images/facebook-reseller/anime-mock.jpg", 
+                                    "is_reusable":true
+                            }
+                    }
+    
+                }';
+            
+    $jsonData = '{"recipient":{ "id":"'.$sender.'" },
+                  "message":'.$output.'
+                }';
+                
+                
+    return $jsonData;
+}
+function getFinishImage($sender){
         $output = '{
                     "attachment":{
                             "type":"image",
