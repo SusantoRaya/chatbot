@@ -4,23 +4,16 @@ $access_token = "EAAEdVUvgTwwBAMq2qUDZBVTZBITiIQNfetlgbjbYZC9kFl8UN9hsCTrMZCkjhm
 //$access_token = "EAABZBz1EPLBwBAPwkU3jdGcz4XlZB8hJ52D9WGRE6aBt1dAuoY1BUuCH4HczzMZBjvzOCJM66vWuT1wS956juD70vitmpeFW4BDHgqsgwWvMARaabg6ZCu3kbfjHi3heFK8ozUQ6ZCu4idbpynTd6qj78zSoY4zKxHoXb2JtZAkAZDZD";
 $verify_token = "fb_mv_bot";
 $hub_verify_token = null;
-
 if(isset($_REQUEST['hub_challenge'])) {
  $challenge = $_REQUEST['hub_challenge'];
  $hub_verify_token = $_REQUEST['hub_verify_token'];
 }
-
 if ($hub_verify_token === $verify_token) {
  echo $challenge;
 }
-
-
 $input = json_decode(file_get_contents('php://input'),true);
-
 $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
 $message = isset($input['entry'][0]['messaging'][0]['message']['text'])? $input['entry'][0]['messaging'][0]['message']['text'] : '';
-
-
 if($message){
     
     if($message == "Reseller Anime"){
@@ -37,6 +30,9 @@ if($message){
             //file_put_contents('aaa.txt',$jsonData);
     }else if($message == "button"){
             $jsonData = getButton($sender);
+            //file_put_contents('aaa.txt',$jsonData);
+    }else if($message == "image"){
+            $jsonData = getImage($sender);
             //file_put_contents('aaa.txt',$jsonData);
     }else{
         
@@ -74,8 +70,6 @@ if($message){
     curl_close($ch);
     
 }
-
-
 function formatText($sender,$message){
     $jsonData = '{
     
@@ -90,7 +84,25 @@ function formatText($sender,$message){
                 
     return $jsonData;
 }
-
+function getImage($sender){
+        $output = '{
+                    "attachment":{
+                            "type":"image",
+                            "payload":{
+                                    "url":"http://custom.co.id/images/home/sablon-baju.jpg", 
+                                    "is_reusable":true
+                            }
+                    }
+    
+                }';
+            
+    $jsonData = '{"recipient":{ "id":"'.$sender.'" },
+                  "message":'.$output.'
+                }';
+                
+                
+    return $jsonData;
+}
 function getSlider($sender){
     
     $items = array();
@@ -136,7 +148,6 @@ function getSlider($sender){
                 
     return $jsonData;
 }
-
 function getButton($sender){
     
     
@@ -172,6 +183,4 @@ function getButton($sender){
                 
     return $jsonData;
 }
-
-
 ?>
