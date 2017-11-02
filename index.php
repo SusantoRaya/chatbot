@@ -24,11 +24,7 @@ $message = isset($input['entry'][0]['messaging'][0]['message']['text'])? $input[
 if($message){
     
     if($message == "Reseller"){
-            $message_to_reply = "Custom.ph are digital textile startup. 
-We can provide dropship anime fullprint t-shirt, 
-No worries, so no inventory is needed.
-We print on demand and we don’t have minimum order. 
-Delivery will only take 4-7 days upon placement of your order.";
+            $message_to_reply = "Custom.ph are digital textile startup.";
             $jsonData = formatText($sender,$message_to_reply);
     }
     else if($message == "slider"){
