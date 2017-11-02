@@ -23,7 +23,7 @@ $message = isset($input['entry'][0]['messaging'][0]['message']['text'])? $input[
 
 if($message){
     
-    if($message == "Reseller"){
+    if($message == "Reseller Anime"){
             $message_to_reply = "Custom.ph are digital textile startup." .
                                 "Custom.ph are digital textile startup." .
                                 "We can provide dropship anime fullprint t-shirt," .
