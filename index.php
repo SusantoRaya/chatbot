@@ -74,9 +74,9 @@ if($message){
         
         
     }
-    else if($message == "Reseller Dota"){
+    if($message == "Reseller Dota"){
         
-        $message_to_reply = "We are a digital textile startup. We can provide dropship Anime fullprint t-shirt, so no inventory is needed. We print on demand and we don’t have minimum order. Delivery will only take 4-7 days upon placement of your order.".
+        $message_to_reply = "We are a digital textile startup. We can provide dropship Dota fullprint t-shirt, so no inventory is needed. We print on demand and we don’t have minimum order. Delivery will only take 4-7 days upon placement of your order.".
                                 "These are some sample designs from our catalogue, you might want to them check out.";
             $jsonData = formatText($sender,$message_to_reply);
             $jsonData2 = getMockImageDota($sender);
