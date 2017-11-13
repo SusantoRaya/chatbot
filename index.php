@@ -125,19 +125,20 @@ if($message){
             curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
             $result = curl_exec($ch);
             curl_close($ch);
-    }else{
-            $message_to_reply = "For More Information, you can contact our staff !";
-            $jsonData = formatText($sender,$message_to_reply);
-     
-            $url = "https://graph.facebook.com/v2.6/me/messages?access_token=".$access_token;
-            $ch = curl_init($url);
-            curl_setopt($ch,CURLOPT_POST,1);
-            curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData);
-            curl_setopt($ch,CURLOPT_HTTPHEADER,array('content-type: application/json'));
-            curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
-            $result = curl_exec($ch);
-            curl_close($ch);
     }
+//  else{
+//             $message_to_reply = "For More Information, you can contact our staff !";
+//             $jsonData = formatText($sender,$message_to_reply);
+     
+//             $url = "https://graph.facebook.com/v2.6/me/messages?access_token=".$access_token;
+//             $ch = curl_init($url);
+//             curl_setopt($ch,CURLOPT_POST,1);
+//             curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData);
+//             curl_setopt($ch,CURLOPT_HTTPHEADER,array('content-type: application/json'));
+//             curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
+//             $result = curl_exec($ch);
+//             curl_close($ch);
+//     }
 //    else if($message == "slider"){
 //            $jsonData = getSlider($sender);
 //            //file_put_contents('aaa.txt',$jsonData);
